@@ -6,11 +6,15 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"regexp"
 	"time"
 )
 
 //Eliza responses
 func ElizaResponse(input string) string {
+	if matched, _ := regexp.MatchString(`(?i).*\bfather\b.*`, input); matched {
+		return "Why don’t you tell me more about your father?"
+	}
 
 	answers := []string{
 		"I’m not sure what you’re trying to say. Could you explain it to me?",

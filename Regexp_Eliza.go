@@ -17,11 +17,11 @@ func ElizaResponse(input string) string {
 		return "Why don’t you tell me more about your father?"
 	}
 
-	//if string begins with form of "i am",capture rest of the string and
+	//if string begins with variant of "i am",capture rest of the string and
 	//concatenate that to your response
-	re := regexp.MustCompile(`(?i)I am ([^.?!]*)[.?!]?`)
+	re := regexp.MustCompile(`(?i)I am ([^.?!]*)([.?!]?)`)
 	if matched := re.MatchString(input); matched {
-		return re.ReplaceAllString(input, "How do you know you are $1?")
+		return re.ReplaceAllString(input, "I am $1 too$2")
 	}
 
 	//random Eliza responses
@@ -48,7 +48,7 @@ func main() {
 	fmt.Println(ElizaResponse("I was my father’s favourite."))
 	fmt.Println()
 
-	fmt.Println("I’m looking forward to the weekend.")
+	fmt.Println("I'm looking forward to the weekend.")
 	fmt.Println(ElizaResponse("I’m looking forward to the weekend."))
 	fmt.Println()
 
